@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity"
+    android:background="@color/main_color">
+
+
+    <ImageView
+        android:id="@+id/user_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16.5dp"
+        android:src="@drawable/ic_form_person"
+        app:tint="@color/form_text"
+        android:background="@color/icon_background"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintEnd_toStartOf="@id/user_name"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintBottom_toTopOf="@id/enter"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintHorizontal_chainStyle="packed"/>
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@color/registration_form"
+        app:layout_constraintStart_toEndOf="@id/user_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/enter"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:hint="@string/placeholder_username"
+        android:textColorHint="@color/form_text"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:padding="@dimen/form_padding"
+        android:inputType="text|textNoSuggestions"
+        />
+
+
+
+    <Button
+        android:id="@+id/enter"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/user_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="5dp"
+        android:padding="@dimen/form_padding"
+        android:text="Вхід"
+        android:backgroundTint="@color/form_pink"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/eror"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enter"
+        android:text="Ім'я не може бути меньше 3 символів"
+        android:textColor="@color/design_default_color_error"
+        android:visibility="invisible"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
