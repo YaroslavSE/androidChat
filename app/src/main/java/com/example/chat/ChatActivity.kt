@@ -4,10 +4,9 @@ package com.example.chat
 import android.os.Build
 import android.os.Bundle
 
-import android.util.Log
-import android.view.LayoutInflater
+
 import android.view.Menu
-import android.view.View
+
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -22,12 +21,11 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import com.example.chat.data.FileUtils
+
 import com.example.chat.data.Message
 import com.example.chat.data.UserManager
 import com.example.chat.databinding.ActivityHomeBinding
-import com.example.chat.databinding.FragmentHomeBinding
-import com.example.chat.databinding.MessageBoxBinding
+
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -38,7 +36,7 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 
-class ChatActivity : AppCompatActivity(),WebSocketCallback {
+class ChatActivity : AppCompatActivity(){
 
     private val client = OkHttpClient()
 
@@ -161,12 +159,4 @@ class ChatActivity : AppCompatActivity(),WebSocketCallback {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onMessageReceived(message: String) {
-
-            runOnUiThread {
-                val messageBoxCardView = layoutInflater.inflate(R.layout.message_box, null) as CardView
-                val chatLayout: LinearLayout = findViewById(R.id.chat_layout)
-                chatLayout.addView(messageBoxCardView)
-            }
-    }
 }
