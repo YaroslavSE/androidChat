@@ -1,11 +1,9 @@
 package com.example.chat
-/*import MyWebSocketListener
-import WebSocketManager*/
-import android.content.Context
-import android.location.GnssAntennaInfo.Listener
+
+
 import android.os.Build
 import android.os.Bundle
-import java.time.LocalDateTime
+
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
@@ -44,7 +42,6 @@ class ChatActivity : AppCompatActivity(),WebSocketCallback {
 
     private val client = OkHttpClient()
 
-    // Здесь укажите URL вашего WebSocket сервера
     private val webSocketUrl = "ws://78.137.17.160:25565"
 
     private lateinit var webSocket: WebSocket
@@ -55,8 +52,6 @@ class ChatActivity : AppCompatActivity(),WebSocketCallback {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         initWebSocket()
         super.onCreate(savedInstanceState)
 
@@ -66,18 +61,14 @@ class ChatActivity : AppCompatActivity(),WebSocketCallback {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-
-
-
-
         binding.appBarMain.fab.setOnClickListener { view ->
-            val messageText = findViewById<EditText>(R.id.message_input)//.text.toString()
-            if (messageText.toString().trim().isEmpty()) {
+            val messageText = findViewById<EditText>(R.id.message_input)
+            if (messageText.text.toString().trim().isEmpty()) {
                 Snackbar.make(view, "The message is empty", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
             } else {
                 var message = Message(UserManager.currentUser!!.username,"${LocalTime.now().format(DateTimeFormatter.ofPattern("HH.mm"))}",messageText.text.toString().trim())
-                webSocket.send(message.toJson())//sendMessage(messageText)
+                webSocket.send(message.toJson())
                 messageText.text.clear()
             }
         }
@@ -91,12 +82,7 @@ class ChatActivity : AppCompatActivity(),WebSocketCallback {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
-
     }
-
-
-
 
     private fun initWebSocket() {
         val request = Request.Builder().url(webSocketUrl).build()

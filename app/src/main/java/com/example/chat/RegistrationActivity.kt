@@ -23,12 +23,9 @@ class RegistrationActivity : AppCompatActivity() {
             val enteredText:String? = binding.userName.text.toString()
             if(enteredText?.length!! <= 3){
                 binding.eror.visibility = View.VISIBLE
-            }
-            else{
-
+            } else{
                 FileUtils.saveUser(User(enteredText),this)
                 UserManager.currentUser = User(enteredText)
-
                 startActivity(Intent(this,ChatActivity::class.java))
                 finish()
             }
